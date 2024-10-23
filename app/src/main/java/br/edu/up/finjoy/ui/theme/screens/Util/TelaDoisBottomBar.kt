@@ -14,15 +14,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import br.edu.up.finjoy.R
-import br.edu.up.finjoy.ui.theme.screens.Adicionar.TelaUm
+import br.edu.up.finjoy.ui.theme.screens.Boletos.TelaDois
 
 @Composable
-fun TelaUmBottomBar(navController: NavController) {
+fun TelaDoisBottomBar (navController: NavController){
     NavigationBar(containerColor = Color(0xFF4F7550)) {
         NavigationBarItem(
             selected = true,
             onClick = {
-                navController.navigate(TelaUm.TELA_ADICIONAR_ROUTE)
+                navController.navigate(TelaDois.tela_boleto_route)
             },
             icon = {
                 Icon(
@@ -31,12 +31,12 @@ fun TelaUmBottomBar(navController: NavController) {
                     modifier = Modifier.size(40.dp)
                 )
             },
-            label = { Text(text = "Gastos") }
+            label = { Text(text = "Boletos") }
         )
         NavigationBarItem(
             selected = false,
             onClick = {
-                navController.navigate(TelaUm.TELA_EXPORTAR_ROUTE)
+                navController.navigate(TelaDois.tela_pagos_route)
             }, icon = {
                 Icon(
                     painter = painterResource(id = R.drawable.pdff),
@@ -44,20 +44,33 @@ fun TelaUmBottomBar(navController: NavController) {
                     modifier = Modifier.size(40.dp),
                 )
             },
-            label = { Text(text = "Relatórios")}
+            label = { Text(text = "Pagos") }
         )
         NavigationBarItem(
             selected = false,
             onClick = {
-                navController.navigate(TelaUm.TELA_GRAFICO_ROUTE)
+                navController.navigate(TelaDois.tela_pendentes_route)
             }, icon = {
                 Icon(painter = painterResource(id = R.drawable.graph),
                     contentDescription = "C",
                     modifier = Modifier.size(40.dp),
                 )
 
- },
-            label = { Text(text = "Gráficos") }
+            },
+            label = { Text(text = "Pendentes") }
+        )
+        NavigationBarItem(
+            selected = false,
+            onClick = {
+                navController.navigate(TelaDois.tela_graficos_route)
+            },
+            icon = {
+            Icon(painter = painterResource(id = R.drawable.graph),
+                contentDescription = "D",
+                modifier = Modifier.size(40.dp),
+                )
+            },
+            label = { Text(text = "Gráficos")}
         )
     }
 }

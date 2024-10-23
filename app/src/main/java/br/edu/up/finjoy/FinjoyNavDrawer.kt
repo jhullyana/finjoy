@@ -21,7 +21,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.internal.composableLambda
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,7 +37,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import br.edu.up.finjoy.ui.theme.screens.Adicionar.AdicionarNavHost
-import br.edu.up.finjoy.ui.theme.screens.Boletos.TelaBoleto
+import br.edu.up.finjoy.ui.theme.screens.Boletos.BoletoNavHost
 import br.edu.up.finjoy.ui.theme.screens.Conversor.TelaConversor
 import br.edu.up.finjoy.ui.theme.screens.Economia.TelaEconomia
 
@@ -78,7 +77,7 @@ fun FinjoyNavDrawer(){
                     AdicionarNavHost(drawerState)
                 }
                 composable(FinjoyRotas.TELA_BOLETOS_ROTA) {
-                    TelaBoleto(drawerState)
+                    BoletoNavHost(drawerState)
                 }
                 composable(FinjoyRotas.TELA_ECONOMIAS_ROTA) {
                     TelaEconomia(drawerState)
@@ -145,7 +144,7 @@ private fun DrawerContent(
                 modifier = Modifier.size(40.dp),
                 tint = getColorText(RotaUm)
             )
-            Text(text = "Adicionar", fontSize = 30.sp,
+            Text(text = "Gastos", fontSize = 30.sp,
                 color = getColorText(RotaUm)
             )
 

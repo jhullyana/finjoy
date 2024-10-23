@@ -98,24 +98,26 @@ fun TelaAdicionar(
                 composable(AdicionarRota.TELA_LISTAR_ADICIONADOS_ROTA) {
                     TelaListagemAdicionados(adicionados)
                 }
-                composable(AdicionarRota.TELA_INCLUIR_ADICIONADOS_ROTA) {
-                    Column(modifier = Modifier.fillMaxSize()) {
-                        Spacer(modifier = Modifier.height(200.dp))
-                        Text(text = "TELA DE INCLUIR GASTOS")
-                    }
 
+                composable(AdicionarRota.TELA_INCLUIR_ADICIONADOS_ROTA) {
+                    TelaIncluirAdicionados { novoAdicionar ->
+                        adicionados.add(novoAdicionar)
+                        navCtrlAdicionados.popBackStack()
+                    }
                 }
             }
 
 
         },
-        floatingActionButton = { FloatButton{ navCtrlAdicionados.navigate(AdicionarRota.TELA_INCLUIR_ADICIONADOS_ROTA) } },
+        floatingActionButton = {
+            FloatButton{
+                navCtrlAdicionados.navigate(AdicionarRota.TELA_INCLUIR_ADICIONADOS_ROTA) } },
         bottomBar = { TelaUmBottomBar(navCtrlBottomNav) }
     )
 }
 
 @Composable
-private fun TelaListagemAdicionados(adicionados: SnapshotStateList<Adicionar>) {
+fun TelaListagemAdicionados(adicionados: SnapshotStateList<Adicionar>) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,

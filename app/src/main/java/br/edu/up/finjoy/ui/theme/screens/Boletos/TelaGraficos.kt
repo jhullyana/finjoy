@@ -1,32 +1,23 @@
-package br.edu.up.finjoy.ui.theme.screens.Adicionar
+package br.edu.up.finjoy.ui.theme.screens.Boletos
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import br.edu.up.finjoy.ui.theme.screens.Calendario.CalendarioFixo
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.edu.up.finjoy.ui.theme.screens.Util.FinjoyTopBar
 import br.edu.up.finjoy.ui.theme.screens.Util.TelaDoisBottomBar
 
-object RotaAdicionarBoleto {
-    val TELA_LISTAR_BOLETOS_ROTA = "listar_boletos"
-    val TELA_INCLUIR_BOLETOS_ROTA = "incluir_boletos"
-}
-
-
-
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun TelaBoleto(drawerState: DrawerState,
-               navCtrlBottomNav: NavController
-){
+fun TelaGraficos(drawerState: DrawerState, navCtrlBottomNav: NavHostController){
 
     Scaffold(
         topBar = {
@@ -40,12 +31,13 @@ fun TelaBoleto(drawerState: DrawerState,
                 verticalArrangement = Arrangement.Center
             ) {
 
-                CalendarioFixo(onDateSelected = { selectDate ->
-                    navCtrlBottomNav.navigate("adicionar_boleto/${selectDate}")
-                })
+                Text(
+                    text = "Tela de Graficos",
+                    Modifier.padding(30.dp),
+                    fontSize = 40.sp)
 
             }
         },
-        bottomBar = { TelaDoisBottomBar(navController = navCtrlBottomNav)}
+        bottomBar = { TelaDoisBottomBar(navCtrlBottomNav) }
     )
 }
