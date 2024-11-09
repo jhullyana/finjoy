@@ -40,9 +40,14 @@ fun TelaBoleto(drawerState: DrawerState,
                 verticalArrangement = Arrangement.Center
             ) {
 
-                CalendarioFixo(onDateSelected = { selectDate ->
-                    navCtrlBottomNav.navigate("adicionar_boleto/${selectDate}")
+                CalendarioFixo(onDateSelected = { ano, mes, dia ->
+                    val dataSelecionada = "$ano-${mes + 1}-$dia"  // Ajusta o mês (adiciona 1, pois é zero-based)
+                    navCtrlBottomNav.navigate("t2e/$dataSelecionada")
                 })
+
+//                CalendarioFixo(onDateSelected = { (ano, mes dia) ->
+//                    navCtrlBottomNav.navigate("t2e/${selectDate}")
+//                })
 
             }
         },

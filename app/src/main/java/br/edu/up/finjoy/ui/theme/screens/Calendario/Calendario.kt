@@ -24,8 +24,9 @@ import java.util.Calendar
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun CalendarioFixo(onDateSelected: (String) -> Unit) {
+fun CalendarioFixo(onDateSelected: (Int, Int, Int) -> Unit) {
     var selectedDate by remember { mutableStateOf("") }
+
 
     val context = LocalContext.current  // Obtendo o contexto atual
     val calendar = Calendar.getInstance()
@@ -35,9 +36,8 @@ fun CalendarioFixo(onDateSelected: (String) -> Unit) {
 
     val datePickerDialog = DatePickerDialog(
         context, // Passando o contexto correto
-        { _, selectedYear, selectedMonth, selectedDay ->
-            selectedDate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
-            onDateSelected("adicionar_boleto/$selectedDate")
+        { _, ano, mes, dia ->
+            onDateSelected(ano, mes, dia)
         },
         year, month, day
     )
@@ -58,9 +58,3 @@ fun CalendarioFixo(onDateSelected: (String) -> Unit) {
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
-@Preview(showBackground = true)
-@Composable
-fun PreviewCalendarioFixo() {
-    CalendarioFixo(onDateSelected = {})
-}
